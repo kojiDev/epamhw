@@ -11,9 +11,6 @@ public class IntSet {
 
     private long[][] data = {{0}, {0}};
 
-    public IntSet() {
-    }
-
     /**
      * Create prepopulated set.
      *
