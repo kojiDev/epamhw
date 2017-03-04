@@ -62,10 +62,37 @@ public class IntArrayList {
         mergeSort(data, 0, getSize(), new int[getSize()]);
     }
 
-    public void sortUp(){
-        mergeSort(data, 0, getSize(), new int[getSize()]);
-    }
+    public void sortUp() {
 
+        int chunkSize = 1;
+        int a, b, c;
+
+        for (chunkSize = 1; chunkSize < size; chunkSize *= 2) {
+            int[] newData = Arrays.copyOf(data, size);
+            int max = Math.min(size, chunkSize * (int) Math.ceil((double)size / chunkSize));
+            for (int pare = 0; pare < (newData.length + chunkSize * 2 - 1) / (chunkSize * 2); pare++) {
+                a = chunkSize * 2 * pare;
+                b = c = a + chunkSize;
+                for (int i = a; i < Math.min(chunkSize * 2 * (pare +1), max); i++) {
+                    if (a == c) {
+                        data[i] = newData[b];
+                        b++;
+                    } else if (b == c + chunkSize) {
+                        data[i] = newData[a];
+                        a++;
+                    } else {
+                        if (b >= size || newData[a] < newData[b]) {
+                            data[i] = newData[a];
+                            a++;
+                        } else {
+                            data[i] = newData[b];
+                            b++;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Expects collection to be sorted.
