@@ -1,11 +1,13 @@
 package com.kojidev.epamhw.unit2;
 
+import junit.framework.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static junit.framework.Assert.assertEquals;
 
 public class TestOop {
 
@@ -50,9 +52,10 @@ public class TestOop {
                 .collect(Collectors.toList());
 
         System.out.println("\nSorted list of pens: ");
-        for (Product item : sorted) {
-            System.out.println(item);
-        }
+
+        assertEquals(sorted.get(0),pen3);
+        assertEquals(sorted.get(1),pen1);
+        assertEquals(sorted.get(2),pen2);
     }
 
 }
