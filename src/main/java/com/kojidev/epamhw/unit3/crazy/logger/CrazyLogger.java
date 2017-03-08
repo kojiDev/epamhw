@@ -1,4 +1,4 @@
-package com.kojidev.epamhw.unit3;
+package com.kojidev.epamhw.unit3.crazy.logger;
 
 import java.io.*;
 import java.time.LocalDateTime;
