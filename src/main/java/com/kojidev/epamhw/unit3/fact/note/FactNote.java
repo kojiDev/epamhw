@@ -19,6 +19,7 @@ public class FactNote {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
+        bundle = ResourceBundle.getBundle("fact", locale);
     }
 
     public String[] getQuestions() {

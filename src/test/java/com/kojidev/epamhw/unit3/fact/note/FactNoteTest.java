@@ -8,7 +8,7 @@ import java.util.Locale;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 
-public class FactTest {
+public class FactNoteTest {
 
     private FactNote fn;
 

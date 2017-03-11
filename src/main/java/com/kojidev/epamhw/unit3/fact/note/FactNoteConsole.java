@@ -5,54 +5,55 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.function.Consumer;
 
 public class FactNoteConsole {
 
-    private ResourceBundle bundle = ResourceBundle.getBundle("interface");
-    private FactNote factNote = new FactNote();
+    private static ResourceBundle bundle = ResourceBundle.getBundle("fact");
+    private static FactNote factNote = new FactNote();
 
-    public FactNoteConsole(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        Locale locale = null;
 
         if (args.length > 0) {
-            String localeCode = args[0];
+            locale = getLocaleByLanguageCode(args[0]);
         }
-
-        Locale locale = getLocaleByLanguageCode(locale);
 
         if (locale == null) {
-            ask("choose.locale", l -> factNote.setLocale(l));
-        }
-
-
-    }
-
-    private void ask(String s) {
-        System.out.println(s);
-    }
-
-    private void ask(String s, Consumer<Locale> o) {
-        while (true) {
-            try {
-                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                Locale locale = getLocaleByLanguageCode(br.readLine());
-                if (locale != null) {
-                    o.accept(locale);
-                    break;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            System.out.println(bundle.getString("choose.language"));
+            for (Locale l : factNote.getLocales()) {
+                System.out.println(String.format("[%s] - %s", l.getLanguage(), l.getDisplayLanguage()));
             }
+            locale = askLocale(br);
         }
+
+        factNote.setLocale(locale);
+
+        String fact = null;
+
+        if (args.length > 1) {
+            fact = factNote.showFactForQuestionNumber(Integer.valueOf(args[1]));
+        }
+
+        if (fact == null) {
+            String[] qs = factNote.getQuestions();
+            for (int i = 0; i < qs.length; i++) {
+                System.out.println(String.format("[%d] - %s", i, qs[i]));
+            }
+            fact = askFact(br);
+        }
+
+        System.out.println(fact);
+
     }
 
-    public static void main(String[] args) {
-
-        FactNoteConsole console = new FactNoteConsole(args);
-
+    private static String askFact(BufferedReader br) throws IOException {
+        return factNote.showFactForQuestionNumber(Integer.valueOf(br.readLine()));
     }
 
-    private Locale getLocaleByLanguageCode(String name) {
+    private static Locale getLocaleByLanguageCode(String name) {
         for (Locale locale : factNote.getLocales()) {
             if (locale.getLanguage().equals(name)) {
                 return locale;
@@ -60,5 +61,18 @@ public class FactNoteConsole {
         }
 
         return null;
+    }
+
+    private static Locale askLocale(BufferedReader br) {
+        while (true) {
+            try {
+                Locale locale = getLocaleByLanguageCode(br.readLine());
+                if (locale != null) {
+                    return locale;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
