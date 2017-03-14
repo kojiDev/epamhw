@@ -1,4 +1,4 @@
 .idea
 epamhw.iml
 target/
-src/main/resources/unit4/keywords_output.txt
+src/main/resources/unit4/keywords_output*.txt
