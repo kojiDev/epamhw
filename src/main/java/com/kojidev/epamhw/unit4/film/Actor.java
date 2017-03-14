@@ -1,6 +1,19 @@
 package com.kojidev.epamhw.unit4.film;
 
-public class Actor {
-    public Actor(String s) {
+import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+
+@EqualsAndHashCode
+public class Actor implements Serializable {
+
+    private final String name;
+
+    public Actor(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
