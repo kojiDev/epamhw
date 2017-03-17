@@ -10,7 +10,7 @@ public class ParserTest {
 
 //    public void getSentences() {
 //
-//        Parser parser = new Parser("page.html");
+//        Parser parser = new Parser("unit4/page.html");
 //        List<String> sentences = parser.getSentences();
 //
 //        assertFalse(parser.arePictureReferencesOrdered());

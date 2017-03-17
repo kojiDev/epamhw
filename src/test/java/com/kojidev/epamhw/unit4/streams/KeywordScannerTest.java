@@ -26,8 +26,8 @@ public class KeywordScannerTest {
 
     @Before
     public void init() {
-        ks = new KeywordScanner("src/main/resources/Scanner.java");
-        ksc = new KeywordScannerChar("src/main/resources/Scanner.java");
+        ks = new KeywordScanner("src/main/resources/unit4/Scanner.java");
+        ksc = new KeywordScannerChar("src/main/resources/unit4/Scanner.java");
     }
 
     @Test
