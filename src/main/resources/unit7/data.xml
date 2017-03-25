@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<data>
+    <users>
+        <user name="ivan" cash="1400"/>
+        <user name="pavel" cash="1100"/>
+    </users>
+    <transactions>
+        <transaction
+            from="ivan"
+            to="pavel"
+            amount="100"/>
+        <transaction
+            from="pavel"
+            to="ivan"
+            amount="100"/>
+        <transaction
+            from="ivan"
+            to="pavel"
+            amount="100"/>
+        <transaction
+            from="pavel"
+            to="ivan"
+            amount="100"/>
+        <transaction
+            from="ivan"
+            to="pavel"
+            amount="100"/>
+        <transaction
+            from="ivan"
+            to="pavel"
+            amount="100"/>
+    </transactions>
+</data>
