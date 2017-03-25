@@ -10,11 +10,13 @@ import java.io.IOException;
 public class AccountantTest {
 
     @Test
-    public void test() throws IOException, SAXException, ParserConfigurationException {
+    public void test() throws IOException, SAXException, ParserConfigurationException, InterruptedException {
         Accountant accountant = new Accountant("src/main/resources/unit7/data.xml");
         Account ivan = new Account("ivan");
         Account pavel = new Account("pavel");
         accountant.checkout(ivan, pavel);
+
+        Thread.sleep(100);
 
         Assert.assertEquals(ivan.getCash(), 1200);
         Assert.assertEquals(pavel.getCash(), 1300);

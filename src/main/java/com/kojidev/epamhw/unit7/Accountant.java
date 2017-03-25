@@ -43,12 +43,6 @@ public class Accountant {
 
                 t.start();
                 t1.start();
-                try {
-                    t.join();
-                    t1.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }
